@@ -14,6 +14,7 @@ options(){
   echo "--math       -  Doing simple math."
   echo "--variable   -  Defining variables."
   echo "--list       -  Defining a list."
+  echo "--array      -  Defining an array."
   echo "--increment  -  Incrementing a counter variable."
   echo "--if         -  If statement."
   echo "--if_short   -  Short hand if statement."
@@ -46,9 +47,9 @@ myMath(){
 
   echo
   echo "Usage:"
-  echo "  1. echo \$C - prints 3"
-  echo "  2. echo \$C - prints 2"
-  echo "  3. echo \$C - prints -1"
+  echo "  1. echo \$C - prints \'3\'"
+  echo "  2. echo \$C - prints \'2\'"
+  echo "  3. echo \$C - prints \"-1\""
 }
 
 myVariable(){
@@ -57,8 +58,8 @@ myVariable(){
   echo "  WORD='text'"
   echo
   echo "Usage:"
-  echo "  echo \$NUMBER"
-  echo "  echo \$WORD"
+  echo "  echo \$NUMBER - prints \"123\""
+  echo "  echo \$WORD   - prints \"text\""
 }
 
 myList(){
@@ -66,9 +67,22 @@ myList(){
   echo "  LIST='str_1 str_2 str_3'"
   echo
   echo "Usage:"
-  echo "  echo \$LIST"
+  echo "  echo \$LIST - prints \"str_1 str_2 str_3\""
   echo
   echo "Execute \"bcs --for_each\" to see how to use LIST with for each loop."
+}
+
+myArray(){
+  echo "Declaration:"
+  echo "  arr=(hello world)"
+  echo
+  echo "Usage:"
+  echo "  echo \${arr[0]}   - prints \"hello\""
+  echo "  echo \${arr[1]}   - prints \"world\""
+  echo "  echo \${arr[*]}   - prints all items in array"
+  echo "  echo \${!arr[*]}  - prints all indexes of array"
+  echo "  echo \${#arr[*]}  - prints number of items in array"
+  echo "  echo \${#arr[i]}  - prints length of item @ i"
 }
 
 myIncrement(){
@@ -81,7 +95,7 @@ myIncrement(){
   echo '  3. COUNTER=$((++COUNTER))'
   echo
   echo "Usage:"
-  echo "  echo \$COUNTER"
+  echo "  echo \$COUNTER - prints \'1\'"
 }
 
 myIf(){
@@ -224,6 +238,8 @@ else
       myVariable;;
     "--list")
       myList;;
+    "--array")
+      myArray;;
     "--increment")
       myIncrement;;
     "--if")
